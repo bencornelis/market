@@ -1,5 +1,5 @@
 class Checkout
-  def self.create
+  def self.with_discounts
     discounters = Discounter.types.map(&:new)
     new(discounters)
   end
