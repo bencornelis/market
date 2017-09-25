@@ -22,6 +22,6 @@ class Discounter
   end
 
   def discountable_items(checkout)
-    raise 'Implement #discountables in subclass'
+    raise 'Implement #discountable_items in subclass'
   end
 end
