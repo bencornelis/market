@@ -1,6 +1,20 @@
 require 'spec_helper'
 
 describe Checkout do
+  it 'is initialized with no discounters' do
+    checkout = Checkout.new
+
+    expect(checkout.discounters).to be_empty
+  end
+
+  describe '.with_discounts' do
+    it 'initializes a checkout with all the discounts' do
+      checkout = Checkout.with_discounts
+
+      expect(checkout.discounters.size).to eq 3
+    end
+  end
+
   describe '#total_price' do
     it 'calculates the total price with discounts applied' do
       checkout1 = create_checkout('CH1 AP1 CF1 MK1')
