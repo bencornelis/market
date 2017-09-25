@@ -66,7 +66,7 @@ class ChdoDiscounter < Discounter
 
   def discountable_items(checkout)
     items = checkout.basket
-    items.map(&:chai?).drop(1)
+    items.select(&:chai?).drop(1)
   end
 end
 ```
