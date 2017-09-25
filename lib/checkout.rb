@@ -4,7 +4,7 @@ class Checkout
     new(discounters)
   end
 
-  attr_reader :basket
+  attr_reader :basket, :discounters
 
   def initialize(discounters = [])
     @basket = []
@@ -28,7 +28,7 @@ class Checkout
 
   private
 
-  attr_reader :discounters, :printer
+  attr_reader :printer
 
   def apply_discounts
     discounters.each do |discounter|
