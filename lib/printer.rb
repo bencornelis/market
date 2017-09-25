@@ -4,7 +4,7 @@ class Printer
   end
 
   def print_register
-    [*headers, *collect_rows].each { |row| print_row(row) }
+    [*headers, *collect_entries].each { |row| print_row(row) }
     print_divider
     print_total
   end
@@ -28,11 +28,11 @@ class Printer
     puts "#{format_price(checkout.total_price)}".rjust(29, ' ')
   end
 
-  def collect_rows
-    checkout.basket.each_with_object([]) do |item, rows|
-      rows << [item.code, '', format_price(item.price)]
+  def collect_entries
+    checkout.basket.each_with_object([]) do |item, entries|
+      entries << [item.code, '', format_price(item.price)]
       next unless item.discounted?
-      rows << ['', item.discount.name, "-#{format_price(item.discount_amount)}"]
+      entries << ['', item.discount.name, "-#{format_price(item.discount_amount)}"]
     end
   end
 
