@@ -37,6 +37,20 @@ MK1                      4.75
 -----------------------------
                          9.11
 ```
+To initialize a checkout with no discounts, or only select discounts, use `new`:
+
+```ruby
+checkout = Checkout.new
+checkout.discounters.empty?
+# => true
+
+bogo = BogoDiscounter.new
+chmk = ChmkDiscounter.new
+
+checkout = Checkout.new([bogo, chmk])
+checkout.discounters.size
+# => 2
+```
 
 ### Testing
 
