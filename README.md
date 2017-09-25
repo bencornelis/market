@@ -40,7 +40,7 @@ MK1                      4.75
 
 ### Testing
 
-Testing is done with RSpec. To run all specs use the `rspec` command.
+Testing is done with RSpec. To run all specs use the `rspec` command. Running the tests requires Ruby 2.3 for multiline strings with no indent.
 
 ### Extending Functionality
 
