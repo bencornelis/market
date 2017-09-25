@@ -8,8 +8,6 @@ describe Checkout do
       checkout3 = create_checkout('CF1 CF1')
       checkout4 = create_checkout('AP1 AP1 CH1 AP1')
 
-      [checkout1, checkout2, checkout3, checkout4].each(&:apply_discounts)
-
       expect(checkout1.total_price).to eq 20.34
       expect(checkout2.total_price).to eq 10.75
       expect(checkout3.total_price).to eq 11.23

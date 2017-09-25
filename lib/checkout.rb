@@ -17,13 +17,8 @@ class Checkout
   end
 
   def total_price
-    basket.map(&:discounted_price).reduce(:+)
-  end
-
-  def apply_discounts
-    discounters.each do |discounter|
-      discounter.apply_discount(self)
-    end
+    apply_discounts
+    calculate_price
   end
 
   def show
@@ -34,6 +29,16 @@ class Checkout
   private
 
   attr_reader :discounters, :printer
+
+  def apply_discounts
+    discounters.each do |discounter|
+      discounter.apply_discount(self)
+    end
+  end
+
+  def calculate_price
+    basket.map(&:discounted_price).reduce(:+)
+  end
 
   def print_register
     printer.print_register
