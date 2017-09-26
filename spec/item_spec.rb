@@ -2,12 +2,22 @@ require 'spec_helper'
 
 describe Item do
   describe '.from_code' do
-    it 'creates an item by looking up properties for the code' do
-      item = Item.from_code('AP1')
+    context 'when an item has that code' do
+      it 'creates the item by looking up properties for the code' do
+        item = Item.from_code('AP1')
 
-      expect(item.code).to eq 'AP1'
-      expect(item.name).to eq 'Apples'
-      expect(item.price).to eq 6.0
+        expect(item.code).to eq 'AP1'
+        expect(item.name).to eq 'Apples'
+        expect(item.price).to eq 6.0
+      end
+    end
+
+    context 'when no item has that code' do
+      it 'raises an error' do
+        expect {
+          Item.from_code('QR1')
+        }.to raise_error(ArgumentError, 'No item with that code exists.')
+      end
     end
   end
 

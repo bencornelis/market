@@ -3,8 +3,12 @@ require 'yaml'
 class Item
   def self.from_code(code)
     market = YAML.load_file(File.join(__dir__, 'market.yml'))
-    name   = market[code]['name']
-    price  = market[code]['price']
+    unless market[code]
+      raise ArgumentError.new 'No item with that code exists.'
+    end
+
+    name  = market[code]['name']
+    price = market[code]['price']
     new(code, name, price)
   end
 
